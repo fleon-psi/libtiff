@@ -76,7 +76,7 @@ pkgconfig_DATA = libtiff-4.pc
 
 # Special rules to assist with Coverity submissions.
 PACKAGE_CHANGE_DATE=`awk '/^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print substr($$1,1,4) substr($$1,6,2) substr($$1,9,2); exit; }' $(top_srcdir)/ChangeLog`
-COVERITY_EMAIL=bfriesen@simple.dallas.tx.us
+COVERITY_EMAIL=faxguy@howardsilvan.com
 COVERITY_TARBALL=libtiff.xz
 COVERITY_VERSION=devel-${PACKAGE_CHANGE_DATE}
 COVERITY_DESCRIPTION='libtiff development'
