@@ -1,3 +1,23 @@
+2024-03-12  Lee Howard <faxguy@howardsilvan.com>
+
+	Fix tiffcrop issue #552
+	tiffcrop issue #561 appears to already be addressed
+	tiffcrop issue #562 appears to already be addressed
+	tiffcrop issue #563 appears to already be addressed
+	tiffcrop issue #564 appears to already be addressed
+	tiffcrop issue #565 appears to already be addressed
+	tiffcrop issue #566 appears to already be addressed
+	tiffcrop issue #567 appears to already be addressed
+	tiffcrop issue #568 appears to already be addressed
+	tiffcrop issue #569 appears to already be addressed
+	tiffcrop issue #573 appears to already be addressed
+	tiffcrop issue #590 appears to already be addressed
+	tiffcrop issue #593 appears to already be addressed
+	tiffcrop issue #594 already addressed by commit 42173d6a 2022-12-08
+	tiffcrop issue #595 already addressed by commit 5320c9d8 2023-10-31
+	Apply recommended changes for tiff2pdf issue #596
+	Apply recommended changes for tiffmedian issue #599
+
 2024-03-11  Lee Howard <faxguy@howardsilvan.com>
 
 	Restore tools and tiffcp -i option removed in v4.6.0
