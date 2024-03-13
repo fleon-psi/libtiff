@@ -7766,6 +7766,14 @@ static int extractImageSection(struct image_data *image,
         (sect_width * spp * bps) %
         8; /* trailing bits within the last byte of destination buffer */
 
+    /* Check to make sure that we've got enough buffer.
+     */
+    if ((last_row - first_row) * img_rowsize > full_bytes)
+    {
+        printf("The source image data is too small.\n");
+        return(-1);
+    }
+
 #ifdef DEVELMODE
     TIFFError("",
               "First row: %" PRIu32 ", last row: %" PRIu32
