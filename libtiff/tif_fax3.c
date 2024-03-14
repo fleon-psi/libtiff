@@ -569,7 +569,11 @@ static int Fax3SetupState(TIFF *tif)
 
       TIFFroundup and TIFFSafeMultiply return zero on integer overflow
     */
-    dsp->runs = (uint32_t *)NULL;
+    if (dsp->runs != NULL)
+    {
+        _TIFFfreeExt(tif, dsp->runs);
+        dsp->runs = (uint32_t *)NULL;
+    }
     dsp->nruns = TIFFroundup_32(rowpixels + 1, 32);
     if (needsRefLine)
     {
@@ -611,7 +615,14 @@ static int Fax3SetupState(TIFF *tif)
          * is referenced.  The reference line must
          * be initialized to be ``white'' (done elsewhere).
          */
-        esp->refline = (unsigned char *)_TIFFmallocExt(tif, rowbytes);
+        if (esp->refline == NULL)
+        {
+            esp->refline = (unsigned char *)_TIFFmallocExt(tif, rowbytes);
+        }
+        else
+        {
+            memset(esp->refline, 0, rowbytes);
+        }
         if (esp->refline == NULL)
         {
             TIFFErrorExtR(tif, module, "No space for Group 3/4 reference line");
