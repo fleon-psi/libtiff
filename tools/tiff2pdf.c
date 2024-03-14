@@ -2271,7 +2271,6 @@ void t2p_read_tiff_size(T2P *t2p, TIFF *input)
                 k += 2; /* add space for restart marker */
             }
             k = checkAdd64(k, 2, t2p); /* use EOI of last strip */
-            k = checkAdd64(k, 6, t2p); /* for DRI marker of first strip */
             t2p_set_tiff_datasize(t2p, k);
             return;
         }
@@ -4028,13 +4027,6 @@ int t2p_process_jpeg_strip(unsigned char *strip, tsize_t *striplength,
                         (unsigned char)((height >> 8) & 0xff);
                     buffer[*bufferoffset + 6] = (unsigned char)(height & 0xff);
                     *bufferoffset += datalen + 2;
-                    /* insert a DRI marker */
-                    buffer[(*bufferoffset)++] = 0xff;
-                    buffer[(*bufferoffset)++] = 0xdd;
-                    buffer[(*bufferoffset)++] = 0x00;
-                    buffer[(*bufferoffset)++] = 0x04;
-                    buffer[(*bufferoffset)++] = (ri >> 8) & 0xff;
-                    buffer[(*bufferoffset)++] = ri & 0xff;
                 }
                 break;
             case 0xc4: /* DHT */
