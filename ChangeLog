@@ -1,5 +1,23 @@
 2024-03-12  Lee Howard <faxguy@howardsilvan.com>
 
+	Fix tiff2pdf issue #255, must use tiff2pdf -n option for case
+	tiff2pdf issue #281 appears to already be addressed, cannot reproduce
+	tiff2bw issue #307 appears to already be addressed, cannot reproduce
+	tiff2bw issue #366 appears to already be addressed, but was speculative
+	tiffcrop issue #367 appears to already be addressed, but was speculative
+	tiffcrop issue #368 appears to already be addressed
+	tiff2ps issue #372 is speculative only, can't reproduce
+	tiff2ps issue #373 appears to already be addressed
+	tiff2ps issue #374 appears to already be addressed
+	tiff2pdf issue #384 appears to already be addressed
+	tiffcrop issue #404 appears to already be addressed
+	tiffcrop issue #405 appears to already be addressed
+	tiffcrop issue #406 appears to already be addressed
+	tiffcrop issue #407 appears to already be addressed
+	tiffcrop issue #408 appears to already be addressed
+	tiffcrop issue #412 appears to already be addressed
+        issues #453, #451, #447 unable to reproduce, appear to be addressed
+	tiff2pdf issue #425 is a stated feature request
 	Fix fax2tiff issue #468
 	Fix tiff2rgba issue #469
 	Fix tiffdither issue #473
