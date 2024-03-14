@@ -1,5 +1,8 @@
 2024-03-12  Lee Howard <faxguy@howardsilvan.com>
 
+	Fix tiff2pdf issue #539
+	tiff2pdf issue #540 appears to already be addressed
+	tiffcrop issue #541 appears to already be addressed
 	tiffcrop issue #549 appears to already be addressed
 	Fix tiffcrop issues #552, #550, #542
 	tiffcrop issue #561 appears to already be addressed
