@@ -1,5 +1,6 @@
 2024-03-12  Lee Howard <faxguy@howardsilvan.com>
 
+	Fix tiffdither issue #473
 	Fix tiff2ps and fax2tiff issues in #476
 	tiffcrop issue #536 appears to already be addressed
 	tiffcrop issue #537 appears to already be addressed
