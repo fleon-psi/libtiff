@@ -1,5 +1,6 @@
 2024-03-12  Lee Howard <faxguy@howardsilvan.com>
 
+        Fix fax2tiff issue #191 - EOFB interpretation
         Fix tiffcp and tiffcrop issue #228
         tiff2pdf issue #229 appears to be a bug in GIMP, not tiff2pdf
         Fix fax2tiff issue #249
