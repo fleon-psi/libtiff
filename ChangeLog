@@ -1,5 +1,7 @@
 2024-03-12  Lee Howard <faxguy@howardsilvan.com>
 
+        Fix tiffcp and tiffcrop issue #228
+        tiff2pdf issue #229 appears to be a bug in GIMP, not tiff2pdf
         Fix fax2tiff issue #249
         Fix tiff2pdf issue #253
 	tiff2pdf issue #254 is another case where -n should be used
