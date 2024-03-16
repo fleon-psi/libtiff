@@ -1,5 +1,7 @@
 2024-03-12  Lee Howard <faxguy@howardsilvan.com>
 
+	Fix tiff2pdf documentation issue #98
+	tiff2pdf issue #163 appears to already be addressed
         Fix tiff2pdf issue #183
         Fix fax2tiff issue #191 - EOFB interpretation
         Fix tiffcp and tiffcrop issue #228
