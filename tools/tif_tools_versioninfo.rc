@@ -38,7 +38,7 @@ BEGIN
             VALUE "OriginalFilename", ""
             VALUE "ProductName", "LibTIFF"
             VALUE "ProductVersion",  TIFFLIB_VERSION_STR_MAJ_MIN_MIC
-            VALUE "WebPage", "https://libtiff.gitlab.io/libtiff/\0"
+            VALUE "WebPage", "http://www.libtiff.org\0"
        END
     END
     BLOCK "VarFileInfo"

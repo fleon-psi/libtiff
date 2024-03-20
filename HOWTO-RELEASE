@@ -144,12 +144,11 @@ Notes on releasing.
         gpg2 --verify ${file}.sig $file ; \
       done
 
-17. Copy release packages from the build tree to the
-    ftp.remotesensing.org ftp site.
+17. Copy release packages from the build tree to the website, e.g.:
 
       scp tiff-*.tar.gz tiff-*.tar.gz.sig tiff-*.tar.xz tiff-*.tar.xz.sig tiff-*.zip tiff-*.zip.sig \
          bfriesen@upload.osgeo.org:/osgeo/download/libtiff
 
-18. Create a gitlab release at https://gitlab.com/libtiff/libtiff/-/releases
+18. Create a gitlab release at https://gitlab.com/faxguy/libtiff-tools/-/releases
 
 19. Announce to list: tiff@lists.osgeo.org
