@@ -25,7 +25,7 @@ dnl OF THIS SOFTWARE.
 dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.64)
-AC_INIT([LibTIFF Software],[4.6.0],[tiff@lists.osgeo.org],[tiff])
+AC_INIT([LibTIFF Software],[4.6.0t],[tiff@lists.osgeo.org],[tiff])
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_MACRO_DIR(m4)
 AC_LANG(C)
@@ -78,7 +78,7 @@ dnl     increment age.
 dnl  6. If any interfaces have been removed since the last public release,
 dnl     then set age to 0.                                
 LIBTIFF_CURRENT=6
-LIBTIFF_REVISION=2
+LIBTIFF_REVISION=3
 LIBTIFF_AGE=0
 LIBTIFF_VERSION_INFO=$LIBTIFF_CURRENT:$LIBTIFF_REVISION:$LIBTIFF_AGE
 
