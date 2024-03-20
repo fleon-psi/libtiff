@@ -1,5 +1,5 @@
 Changes in libtiff+tools v4.6.0t
-======================
+================================
 
 .. table:: References
     :widths: auto
