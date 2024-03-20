@@ -12,7 +12,7 @@ LibTIFF - TIFF Library and Utilities
     Home Page #2**         http://www.simplesystems.org/libtiff/
     Home Page #3**         https://libtiff.gitlab.io/libtiff/
     Latest Stable Release  v4.6.0
-    Master Download Site   `www.libtiff.org <http://www.libtiff.org>`_
+    Master Download Site   `www.libtiff.org/downloads <http://www.libtiff.org/downloads/>`_
     Mailing List           `tiff@lists.osgeo.org <tiff@lists.osgeo.org>`_
     List subscription      http://lists.osgeo.org/mailman/listinfo/tiff/
     List archive           http://www.awaresystems.be/imaging/tiff/tml.html
