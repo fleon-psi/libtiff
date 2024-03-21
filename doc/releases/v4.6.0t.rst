@@ -1,11 +1,11 @@
-Changes in libtiff+tools v4.6.0t
+Changes in TIFF v4.6.0t
 ================================
 
 .. table:: References
     :widths: auto
 
     ======================  ==========================================
-    Current Version         v4.6.0t (:tag:`v4.6.0t`)
+    Current Version         :doc:`v4.6.0t <v4.6.0t>`
     Previous Version        :doc:`v4.6.0 <v4.6.0>`
     Master Download Site    `<http://www.libtiff.org/downloads/>`_
     ======================  ==========================================
