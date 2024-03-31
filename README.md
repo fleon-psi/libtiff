@@ -2,8 +2,7 @@ TIFF Software Distribution
 --------------------------
 This file is just a placeholder; the entire documentation is now located
 as reStructuredText in the doc directory. To view the documentation
-as HTML, visit https://libtiff.gitlab.io/libtiff/ or
-http://www.simplesystems.org/libtiff/ or within the release package
+as HTML, visit http://www.libtiff.org or within the release package
 in the doc/html-prebuilt directory. The manual pages are
 located at doc/man-prebuilt.
 
@@ -25,7 +24,7 @@ found online at http://www.simplesystems.org/libtiff/
 Source code repository
 ----------------------
 
-[GitLab](https://gitlab.com/libtiff/libtiff)
+[GitLab](https://gitlab.com/faxguy/libtiff-tools)
 
 Bug database
 ------------

@@ -583,7 +583,7 @@ printf	(-z: compress with Zip/Deflate (requires zlib configured with libtiff));
 #endif
     -q: compression quality
     -n: no compressed data passthrough
-    -d: do not compress (decompress)
+    -d: do not compress (decompress) - except monochrome to CCITT Group 4
     -i: invert colors
     -u: set distance unit, 'i' for inch, 'm' for centimeter
     -x: set x resolution default
@@ -902,7 +902,7 @@ static void usage_info(int code)
 #if defined(JPEG_SUPPORT) || defined(ZIP_SUPPORT)
         " -q: compression quality\n"
         " -n: no compressed data passthrough\n"
-        " -d: do not compress (decompress)\n"
+        " -d: do not compress (decompress) - except monochrome to CCITT Group 4\n"
 #endif
         " -i: invert colors\n"
         " -u: set distance unit, 'i' for inch, 'm' for centimeter\n"
@@ -1023,7 +1023,7 @@ T2P *t2p_init()
 
 void t2p_free(T2P *t2p)
 {
-    int i = 0;
+    unsigned int i = 0;
 
     if (t2p != NULL)
     {
@@ -2271,7 +2271,6 @@ void t2p_read_tiff_size(T2P *t2p, TIFF *input)
                 k += 2; /* add space for restart marker */
             }
             k = checkAdd64(k, 2, t2p); /* use EOI of last strip */
-            k = checkAdd64(k, 6, t2p); /* for DRI marker of first strip */
             t2p_set_tiff_datasize(t2p, k);
             return;
         }
@@ -3707,7 +3706,7 @@ int t2p_process_ojpeg_tables(T2P *t2p, TIFF *input)
         t2p->t2p_error = T2P_ERR_ERROR;
         return (0);
     }
-    if (q_length < (64U * t2p->tiff_samplesperpixel))
+    if (q_length < (t2p->tiff_samplesperpixel))
     {
         TIFFError(TIFF2PDF_MODULE, "Bad JPEGQTables field in OJPEG image %s",
                   TIFFFileName(input));
@@ -4028,13 +4027,6 @@ int t2p_process_jpeg_strip(unsigned char *strip, tsize_t *striplength,
                         (unsigned char)((height >> 8) & 0xff);
                     buffer[*bufferoffset + 6] = (unsigned char)(height & 0xff);
                     *bufferoffset += datalen + 2;
-                    /* insert a DRI marker */
-                    buffer[(*bufferoffset)++] = 0xff;
-                    buffer[(*bufferoffset)++] = 0xdd;
-                    buffer[(*bufferoffset)++] = 0x00;
-                    buffer[(*bufferoffset)++] = 0x04;
-                    buffer[(*bufferoffset)++] = (ri >> 8) & 0xff;
-                    buffer[(*bufferoffset)++] = ri & 0xff;
                 }
                 break;
             case 0xc4: /* DHT */
@@ -4248,9 +4240,9 @@ tsize_t t2p_sample_rgba_to_rgb(tdata_t data, uint32_t samplecount)
     {
         sample = ((uint32_t *)data)[i];
         alpha = (uint8_t)((255 - ((sample >> 24) & 0xff)));
-        ((uint8_t *)data)[i * 3] = (uint8_t)((sample >> 16) & 0xff) + alpha;
+        ((uint8_t *)data)[i * 3 + 2] = (uint8_t)((sample >> 16) & 0xff) + alpha;
         ((uint8_t *)data)[i * 3 + 1] = (uint8_t)((sample >> 8) & 0xff) + alpha;
-        ((uint8_t *)data)[i * 3 + 2] = (uint8_t)(sample & 0xff) + alpha;
+        ((uint8_t *)data)[i * 3] = (uint8_t)(sample & 0xff) + alpha;
     }
 
     return (i * 3);

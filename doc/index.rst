@@ -8,9 +8,15 @@ LibTIFF - TIFF Library and Utilities
     =====================  =====================================
     Name                   Reference
     =====================  =====================================
+    Home Page #1           http://www.libtiff.org
+    Latest Stable Release  :doc:`v4.6.0t </releases/v4.6.0t>`
+    Master Download Site   `www.libtiff.org/downloads <http://www.libtiff.org/downloads/>`_
+    Source repository      https://gitlab.com/faxguy/libtiff-tools
+    .                      .
+    **Upstream** **        **Reference**
     Home Page #1           http://www.simplesystems.org/libtiff/
     Home Page #2           https://libtiff.gitlab.io/libtiff/
-    Latest Stable Release  v4.6.0
+    Latest Stable Release  v4.6.0 (:tag:`v4.6.0`)
     Master Download Site   `download.osgeo.org <https://download.osgeo.org/libtiff/>`_
     Mailing List           `tiff@lists.osgeo.org <tiff@lists.osgeo.org>`_
     List subscription      http://lists.osgeo.org/mailman/listinfo/tiff/
@@ -34,17 +40,9 @@ your needs for reading and writing TIFF images.
 LibTIFF is portable software, supported on various operating systems including
 UNIX (Linux, BSD, MacOS X) and Windows.
 
-.. warning::
-
-    Starting with libtiff v4.6.0, the source code for most TIFF tools (except tiffinfo,
-    tiffdump, tiffcp and tiffset) was discontinued, due to the lack of contributors
-    able to address reported security issues.
-    tiff2ps and tiff2pdf source code has been moved in a unsupported category,
-    no longer built by default, but are still part of the the source
-    distribution. Other retired utilities are in a archive/ directory, only
-    available in the libtiff git repository.
-    Issues related to unsupported and archived tools will no longer be accepted
-    in the libtiff bug tracker.
+** Upstream libtiff development currently excludes most of the tools and may have
+   fewer features available in the tools not excluded.  Users of the tools should
+   ensure that their source is derived from the repository which includes tools.
 
 
 The following sections are included in this documentation:
