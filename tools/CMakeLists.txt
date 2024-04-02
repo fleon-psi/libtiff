@@ -25,89 +25,89 @@
 # Windows specific resource preparation
 if (WIN32)
   message(STATUS "Include resource version information for TOOLS")
-  set(MSVC_RESSOURCE_FILE tif_tools_versioninfo.rc)
+  set(MSVC_RESOURCE_FILE tif_tools_versioninfo.rc)
   source_group("Resource Files" FILES tif_tools_versioninfo.rc)
 endif ()
 
 
 add_executable(fax2ps ../placeholder.h)
-target_sources(fax2ps PRIVATE fax2ps.c ${MSVC_RESSOURCE_FILE})
+target_sources(fax2ps PRIVATE fax2ps.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(fax2ps PRIVATE tiff tiff_port)
 
 add_executable(fax2tiff ../placeholder.h)
-target_sources(fax2tiff PRIVATE fax2tiff.c ${MSVC_RESSOURCE_FILE})
+target_sources(fax2tiff PRIVATE fax2tiff.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(fax2tiff PRIVATE tiff tiff_port)
 
 add_executable(pal2rgb ../placeholder.h)
-target_sources(pal2rgb PRIVATE pal2rgb.c ${MSVC_RESSOURCE_FILE})
+target_sources(pal2rgb PRIVATE pal2rgb.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(pal2rgb PRIVATE tiff tiff_port)
 
 add_executable(ppm2tiff ../placeholder.h)
-target_sources(ppm2tiff PRIVATE ppm2tiff.c ${MSVC_RESSOURCE_FILE})
+target_sources(ppm2tiff PRIVATE ppm2tiff.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(ppm2tiff PRIVATE tiff tiff_port)
 
 add_executable(raw2tiff ../placeholder.h)
-target_sources(raw2tiff PRIVATE raw2tiff.c ${MSVC_RESSOURCE_FILE})
+target_sources(raw2tiff PRIVATE raw2tiff.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(raw2tiff PRIVATE tiff tiff_port CMath::CMath)
 
 add_executable(rgb2ycbcr ../placeholder.h)
-target_sources(rgb2ycbcr PRIVATE rgb2ycbcr.c ${MSVC_RESSOURCE_FILE})
+target_sources(rgb2ycbcr PRIVATE rgb2ycbcr.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(rgb2ycbcr PRIVATE tiff tiff_port)
 
 add_executable(thumbnail ../placeholder.h)
-target_sources(thumbnail PRIVATE thumbnail.c ${MSVC_RESSOURCE_FILE})
+target_sources(thumbnail PRIVATE thumbnail.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(thumbnail PRIVATE tiff tiff_port CMath::CMath)
 
 add_executable(tiff2bw ../placeholder.h)
-target_sources(tiff2bw PRIVATE tiff2bw.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiff2bw PRIVATE tiff2bw.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiff2bw PRIVATE tiff tiff_port)
 
 add_executable(tiff2pdf ../placeholder.h)
-target_sources(tiff2pdf PRIVATE tiff2pdf.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiff2pdf PRIVATE tiff2pdf.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiff2pdf PRIVATE tiff tiff_port)
 
 add_executable(tiff2ps ../placeholder.h)
-target_sources(tiff2ps PRIVATE tiff2ps.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiff2ps PRIVATE tiff2ps.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiff2ps PRIVATE tiff tiff_port CMath::CMath)
 
 add_executable(tiff2rgba ../placeholder.h)
-target_sources(tiff2rgba PRIVATE tiff2rgba.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiff2rgba PRIVATE tiff2rgba.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiff2rgba PRIVATE tiff tiff_port)
 
 add_executable(tiffcmp ../placeholder.h)
-target_sources(tiffcmp PRIVATE tiffcmp.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffcmp PRIVATE tiffcmp.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffcmp PRIVATE tiff tiff_port)
 
 add_executable(tiffcp ../placeholder.h)
-target_sources(tiffcp PRIVATE tiffcp.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffcp PRIVATE tiffcp.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffcp PRIVATE tiff tiff_port)
 
 add_executable(tiffcrop ../placeholder.h)
-target_sources(tiffcrop PRIVATE tiffcrop.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffcrop PRIVATE tiffcrop.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffcrop PRIVATE tiff tiff_port CMath::CMath)
 
 add_executable(tiffdither ../placeholder.h)
-target_sources(tiffdither PRIVATE tiffdither.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffdither PRIVATE tiffdither.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffdither PRIVATE tiff tiff_port)
 
 add_executable(tiffdump ../placeholder.h)
-target_sources(tiffdump PRIVATE tiffdump.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffdump PRIVATE tiffdump.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffdump PRIVATE tiff tiff_port)
 
 add_executable(tiffinfo ../placeholder.h)
-target_sources(tiffinfo PRIVATE tiffinfo.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffinfo PRIVATE tiffinfo.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffinfo PRIVATE tiff tiff_port)
 
 add_executable(tiffmedian ../placeholder.h)
-target_sources(tiffmedian PRIVATE tiffmedian.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffmedian PRIVATE tiffmedian.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffmedian PRIVATE tiff tiff_port)
 
 add_executable(tiffset ../placeholder.h)
-target_sources(tiffset PRIVATE tiffset.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffset PRIVATE tiffset.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffset PRIVATE tiff tiff_port)
 
 add_executable(tiffsplit ../placeholder.h)
-target_sources(tiffsplit PRIVATE tiffsplit.c ${MSVC_RESSOURCE_FILE})
+target_sources(tiffsplit PRIVATE tiffsplit.c ${MSVC_RESOURCE_FILE})
 target_link_libraries(tiffsplit PRIVATE tiff tiff_port)
 
 # rgb2ycbcr and thumbnail are intended to *NOT* be installed. They are for
