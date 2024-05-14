@@ -1133,9 +1133,6 @@ static int readContigTilesIntoBuffer(TIFF *in, uint8_t *buf,
                             return 1;
                     }
                 }
-                prev_trailing_bits += trailing_bits;
-                /* if (prev_trailing_bits > 7) */
-                /*   prev_trailing_bits-= 8; */
             }
         }
     }
@@ -1369,7 +1366,7 @@ static int writeBufferToSeparateStrips(TIFF *out, uint8_t *buf, uint32_t length,
                   "bytes_per_sample * (width + 1)");
         return 1;
     }
-    rowstripsize = rowsperstrip * bytes_per_sample * (width + 1);
+    rowstripsize = (tsize_t) rowsperstrip * bytes_per_sample * (width + 1);
 
     /* Add 3 padding bytes for extractContigSamples32bits */
     obuf = limitMalloc(rowstripsize + NUM_BUFF_OVERSIZE_BYTES);
@@ -1402,8 +1399,8 @@ static int writeBufferToSeparateStrips(TIFF *out, uint8_t *buf, uint32_t length,
                               (uint64_t)scanlinesize);
                 }
                 dump_info(dump->outfile, dump->format, "",
-                          "Sample %2d, Strip: %2d, bytes: %4d, Row %4d, bytes: "
-                          "%4d, Input offset: %6d",
+                          "Sample %2d, Strip: %2d, bytes: %4ld, Row %4d, bytes: "
+                          "%4d, Input offset: %6ld",
                           s + 1, strip + 1, stripsize, row + 1,
                           (uint32_t)scanlinesize, src - buf);
                 dump_buffer(dump->outfile, dump->format, nrows,
@@ -2652,8 +2649,7 @@ int main(int argc, char *argv[])
 
     if ((argc - optind) == 2)
         pageNum = -1;
-    else
-        total_images = 0;
+
     /* Read multiple input files and write to output file(s) */
     while (optind < argc - 1)
     {
@@ -3423,7 +3419,6 @@ static int extractContigSamples16bits(uint8_t *in, uint8_t *out, uint32_t cols,
             buff1 = (buff1 & matchbits) << (src_bit);
             if (ready_bits < 8) /* add another bps bits to the buffer */
             {
-                bytebuff = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
@@ -3541,7 +3536,6 @@ static int extractContigSamples24bits(uint8_t *in, uint8_t *out, uint32_t cols,
 
             if (ready_bits < 16) /* add another bps bits to the buffer */
             {
-                bytebuff1 = bytebuff2 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
@@ -3677,7 +3671,6 @@ static int extractContigSamples32bits(uint8_t *in, uint8_t *out, uint32_t cols,
             }
             else
             { /* add another bps bits to the buffer */
-                bytebuff1 = bytebuff2 = bytebuff3 = bytebuff4 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             ready_bits += bps;
@@ -3985,7 +3978,6 @@ static int extractContigSamplesShifted24bits(uint8_t *in, uint8_t *out,
 
             if (ready_bits < 16) /* add another bps bits to the buffer */
             {
-                bytebuff1 = bytebuff2 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
@@ -4109,7 +4101,6 @@ static int extractContigSamplesShifted32bits(uint8_t *in, uint8_t *out,
 
             if (ready_bits < 32)
             { /* add another bps bits to the buffer */
-                bytebuff1 = bytebuff2 = bytebuff3 = bytebuff4 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
@@ -4392,7 +4383,6 @@ static int combineSeparateSamplesBytes(unsigned char *srcbuffs[],
                 src = srcbuffs[s] + col_offset;
                 for (i = 0; i < bytes_per_sample; i++)
                     *(dst + i) = *(src + i);
-                src += bytes_per_sample;
                 dst += bytes_per_sample;
             }
         }
@@ -4617,7 +4607,7 @@ static int combineSeparateSamples16bits(uint8_t *in[], uint8_t *out,
             {
                 dump_info(dumpfile, format, "",
                           "Row %3d, Col %3d, Src byte offset %3d  bit offset "
-                          "%2d  Dst offset %3d",
+                          "%2d  Dst offset %3ld",
                           row + 1, col + 1, src_byte, src_bit, dst - out);
                 dump_byte(dumpfile, format, "Final bits", bytebuff);
             }
@@ -4747,7 +4737,7 @@ static int combineSeparateSamples24bits(uint8_t *in[], uint8_t *out,
         {
             dump_info(dumpfile, format, "",
                       "Row %3d, Col %3d, Src byte offset %3d  bit offset %2d  "
-                      "Dst offset %3d",
+                      "Dst offset %3ld",
                       row + 1, col + 1, src_byte, src_bit, dst - out);
 
             dump_long(dumpfile, format, "Match bits ", matchbits);
@@ -4888,7 +4878,7 @@ static int combineSeparateSamples32bits(uint8_t *in[], uint8_t *out,
         {
             dump_info(dumpfile, format, "",
                       "Row %3d, Col %3d, Src byte offset %3d  bit offset %2d  "
-                      "Dst offset %3d",
+                      "Dst offset %3ld",
                       row + 1, col + 1, src_byte, src_bit, dst - out);
 
             dump_wide(dumpfile, format, "Match bits ", matchbits);
@@ -5066,7 +5056,7 @@ static int combineSeparateTileSamples8bits(uint8_t *in[], uint8_t *out,
             {
                 dump_info(dumpfile, format, "",
                           "Row %3d, Col %3d, Src byte offset %3d  bit offset "
-                          "%2d  Dst offset %3d",
+                          "%2d  Dst offset %3ld",
                           row + 1, col + 1, src_byte, src_bit, dst - out);
                 dump_byte(dumpfile, format, "Final bits", buff1);
             }
@@ -5184,7 +5174,7 @@ static int combineSeparateTileSamples16bits(uint8_t *in[], uint8_t *out,
             {
                 dump_info(dumpfile, format, "",
                           "Row %3d, Col %3d, Src byte offset %3d  bit offset "
-                          "%2d  Dst offset %3d",
+                          "%2d  Dst offset %3ld",
                           row + 1, col + 1, src_byte, src_bit, dst - out);
                 dump_byte(dumpfile, format, "Final bits", bytebuff);
             }
@@ -5313,7 +5303,7 @@ static int combineSeparateTileSamples24bits(uint8_t *in[], uint8_t *out,
         {
             dump_info(dumpfile, format, "",
                       "Row %3d, Col %3d, Src byte offset %3d  bit offset %2d  "
-                      "Dst offset %3d",
+                      "Dst offset %3ld",
                       row + 1, col + 1, src_byte, src_bit, dst - out);
 
             dump_long(dumpfile, format, "Match bits ", matchbits);
@@ -5456,7 +5446,7 @@ static int combineSeparateTileSamples32bits(uint8_t *in[], uint8_t *out,
         {
             dump_info(dumpfile, format, "",
                       "Row %3d, Col %3d, Src byte offset %3d  bit offset %2d  "
-                      "Dst offset %3d",
+                      "Dst offset %3ld",
                       row + 1, col + 1, src_byte, src_bit, dst - out);
 
             dump_wide(dumpfile, format, "Match bits ", matchbits);
@@ -9448,7 +9438,6 @@ static int rotateContigSamples16bits(uint16_t rotation, uint16_t spp,
             }
             else
             { /* add another bps bits to the buffer */
-                bytebuff = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             ready_bits += bps;
@@ -9541,7 +9530,6 @@ static int rotateContigSamples24bits(uint16_t rotation, uint16_t spp,
             }
             else
             { /* add another bps bits to the buffer */
-                bytebuff1 = bytebuff2 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             ready_bits += bps;
@@ -9644,7 +9632,6 @@ static int rotateContigSamples32bits(uint16_t rotation, uint16_t spp,
 
             if (ready_bits < 32)
             { /* add another bps bits to the buffer */
-                bytebuff1 = bytebuff2 = bytebuff3 = bytebuff4 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
@@ -10149,7 +10136,6 @@ static int reverseSamples16bits(uint16_t spp, uint16_t bps, uint32_t width,
 
             if (ready_bits < 8)
             { /* add another bps bits to the buffer */
-                bytebuff = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
@@ -10225,7 +10211,6 @@ static int reverseSamples24bits(uint16_t spp, uint16_t bps, uint32_t width,
 
             if (ready_bits < 16)
             { /* add another bps bits to the buffer */
-                bytebuff1 = bytebuff2 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
@@ -10326,7 +10311,6 @@ static int reverseSamples32bits(uint16_t spp, uint16_t bps, uint32_t width,
 
             if (ready_bits < 32)
             { /* add another bps bits to the buffer */
-                bytebuff1 = bytebuff2 = bytebuff3 = bytebuff4 = 0;
                 buff2 = (buff2 | (buff1 >> ready_bits));
             }
             else /* If we have a full buffer's worth, write it out */
