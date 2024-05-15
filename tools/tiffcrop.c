@@ -1399,8 +1399,8 @@ static int writeBufferToSeparateStrips(TIFF *out, uint8_t *buf, uint32_t length,
                               (uint64_t)scanlinesize);
                 }
                 dump_info(dump->outfile, dump->format, "",
-                          "Sample %2d, Strip: %2d, bytes: %4ld, Row %4d, bytes: "
-                          "%4d, Input offset: %6ld",
+                          "Sample %2d, Strip: %2d, bytes: %4zd, Row %4d, bytes: "
+                          "%4d, Input offset: %6zd",
                           s + 1, strip + 1, stripsize, row + 1,
                           (uint32_t)scanlinesize, src - buf);
                 dump_buffer(dump->outfile, dump->format, nrows,
