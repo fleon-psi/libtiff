@@ -5441,7 +5441,7 @@ static int combineSeparateTileSamples32bits(uint8_t *in[], uint8_t *out,
         {
             dump_info(dumpfile, format, "",
                       "Row %3d, Col %3d, Src byte offset %3d  bit offset %2d  "
-                      "Dst offset %3ld",
+                      "Dst offset %3zd",
                       row + 1, col + 1, src_byte, src_bit, dst - out);
 
             dump_wide(dumpfile, format, "Match bits ", matchbits);
