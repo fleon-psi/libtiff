@@ -193,6 +193,14 @@ static uint16_t countInkNamesString(TIFF *tif, uint32_t slen, const char *s)
 {
     uint16_t i = 0;
 
+    if (s == NULL)
+    {
+        TIFFErrorExtR(tif, "TIFFSetField",
+                      "%s: Invalid InkNames value; NULL pointer",
+                      tif->tif_name);
+        return (0);
+    }
+
     if (slen > 0)
     {
         const char *ep = s + slen;
