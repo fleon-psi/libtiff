@@ -61,7 +61,10 @@ JPEG_DEPENDENT_TESTSCRIPTS=\
 	tiff2rgba-quad-tile.jpg.sh \
 	tiff2rgba-ojpeg_zackthecat_subsamp22_single_strip.sh \
 	tiff2rgba-ojpeg_chewey_subsamp21_multi_strip.sh \
-	tiff2rgba-ojpeg_single_strip_no_rowsperstrip.sh
+	tiff2rgba-ojpeg_single_strip_no_rowsperstrip.sh \
+	tiff2rgba-32bpp-None-jpeg.sh \
+	tiffcp-32bpp-None-jpeg.sh \
+	tiffcrop-32bpp-None-jpeg.sh
 endif
 else
 JPEG_DEPENDENT_CHECK_PROG=
