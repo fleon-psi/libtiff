@@ -3707,7 +3707,7 @@ int t2p_process_ojpeg_tables(T2P *t2p, TIFF *input)
         t2p->t2p_error = T2P_ERR_ERROR;
         return (0);
     }
-    if (q_length < (64U * t2p->tiff_samplesperpixel))
+    if (q_length < (t2p->tiff_samplesperpixel))
     {
         TIFFError(TIFF2PDF_MODULE, "Bad JPEGQTables field in OJPEG image %s",
                   TIFFFileName(input));
