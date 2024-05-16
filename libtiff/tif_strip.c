@@ -294,7 +294,17 @@ uint64_t TIFFScanlineSize64(TIFF *tif)
         else
         {
             uint64_t scanline_samples;
-            scanline_samples = _TIFFMultiply64(tif, td->td_imagewidth,
+            uint32_t scanline_width = td->td_imagewidth;
+
+            if (td->td_photometric == PHOTOMETRIC_YCBCR)
+            {
+                uint16_t SubsamplingHor, SubsamplingVerIgnored;
+                TIFFGetFieldDefaulted(tif, TIFFTAG_YCBCRSUBSAMPLING, &SubsamplingHor, &SubsamplingVerIgnored);
+                if (SubsamplingHor > 1) // roundup width for YCbCr
+                    scanline_width = TIFFroundup_32(scanline_width, SubsamplingHor);
+	    }
+
+            scanline_samples = _TIFFMultiply64(tif, scanline_width,
                                                td->td_samplesperpixel, module);
             scanline_size =
                 TIFFhowmany_64(_TIFFMultiply64(tif, scanline_samples,
